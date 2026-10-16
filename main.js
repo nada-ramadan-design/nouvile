@@ -1,116 +1,83 @@
 
-const header = document.querySelector(".header");
-const nav = document.querySelector("#nav");
-const menuToggle = document.querySelector("#menuToggle");
+const stars = document.getElementById("stars");
+const moon = document.getElementById("moon");
+const mountain3 = document.getElementById("mountain3");
+const mountain4 = document.getElementById("mountain4");
+const rivers = document.getElementById("rivers");
+const boat6 = document.getElementById("boat6");
+const mountain7 = document.getElementById("mountain7");
 
-const stars = document.querySelector("#stars");
-const moon = document.querySelector("#moon");
-const mountain3 = document.querySelector("#mountain3");
-const mountain4 = document.querySelector("#mountain4");
-const rivers = document.querySelector("#rivers");
-const boat = document.querySelector("#boat6");
-const mountain7 = document.querySelector("#mountain7");
+const title = document.querySelector(".nouvile");
+const main = document.querySelector(".main");
+const header = document.querySelector("header");
 
 let ticking = false;
 
 function updateScene() {
     const scrollY = window.scrollY;
 
+    // Move the stars slowly
+    stars.style.transform =
+        `translateX(${-scrollY * 0.12}px)`;
+
+    // Move each layer at a different speed
+    moon.style.transform =
+        `translateY(${scrollY * 0.35}px)`;
+
+    mountain3.style.transform =
+        `translateY(${scrollY * 0.18}px)`;
+
+    mountain4.style.transform =
+        `translateY(${scrollY * 0.10}px)`;
+
+    rivers.style.transform =
+        `translateY(${scrollY * 0.04}px)`;
+
+    mountain7.style.transform =
+        `translateY(${scrollY * 0.02}px)`;
+
+    // Move the boat gently
+    const boatX = Math.min(scrollY * 0.35, 180);
+    const boatY = scrollY * 0.08;
+
+    boat6.style.transform =
+        `translate(${boatX}px, ${boatY}px)`;
+
+    // Grow the title, then fade it out
+    const titleSize = Math.min(25 + scrollY * 0.12, 67);
+
+    title.style.fontSize = `${titleSize}px`;
+
+    const opacity = Math.max(
+        0,
+        1 - Math.max(0, scrollY - 220) / 220
+    );
+
+    title.style.opacity = opacity;
+
+    // Change the sky color
+    if (scrollY >= 127) {
+        main.style.background =
+            "linear-gradient(#376281, #10001f)";
+    } else {
+        main.style.background =
+            "linear-gradient(#200016, #10001f)";
+    }
+
+    // Make the header look different after scrolling
     header.classList.toggle("scrolled", scrollY > 40);
-
-    if (stars) {
-        stars.style.transform =
-            `translate3d(${-scrollY * 0.08}px, ${scrollY * 0.05}px, 0)`;
-    }
-
-    if (moon) {
-        moon.style.transform =
-            `translate3d(0, ${scrollY * 0.28}px, 0)`;
-    }
-
-    if (mountain3) {
-        mountain3.style.transform =
-            `translate3d(0, ${scrollY * 0.12}px, 0)`;
-    }
-
-    if (mountain4) {
-        mountain4.style.transform =
-            `translate3d(0, ${scrollY * 0.08}px, 0)`;
-    }
-
-    if (rivers) {
-        rivers.style.transform =
-            `translate3d(0, ${scrollY * 0.035}px, 0)`;
-    }
-
-    if (boat) {
-        const boatX = Math.min(scrollY * 0.3, 180);
-        const boatY = scrollY * 0.055;
-
-        boat.style.transform =
-            `translate3d(${boatX}px, ${boatY}px, 0)`;
-    }
-
-    if (mountain7) {
-        mountain7.style.transform =
-            `translate3d(0, ${scrollY * 0.02}px, 0)`;
-    }
 
     ticking = false;
 }
 
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll", function () {
     if (!ticking) {
         window.requestAnimationFrame(updateScene);
         ticking = true;
     }
-}, { passive: true });
+});
 
 window.addEventListener("resize", updateScene);
 
-menuToggle.addEventListener("click", () => {
-    const isOpen = nav.classList.toggle("open");
-
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-});
-
-document.querySelectorAll(".nav-link").forEach(link => {
-    link.addEventListener("click", () => {
-        nav.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-
-        document.querySelectorAll(".nav-link").forEach(item => {
-            item.classList.remove("active");
-        });
-
-        link.classList.add("active");
-    });
-});
-
-const sections = document.querySelectorAll(
-    "#top, #about, #journey, #contact"
-);
-
-if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-
-            const id = entry.target.id === "top"
-                ? "home"
-                : entry.target.id;
-
-            document.querySelectorAll(".nav-link").forEach(link => {
-                link.classList.toggle(
-                    "active",
-                    link.getAttribute("href") === `#${id}` ||
-                    (id === "home" && link.getAttribute("href") === "#top")
-                );
-            });
-        });
-    }, { threshold: 0.45 });
-
-    sections.forEach(section => observer.observe(section));
-}
-
+// Set the correct scene when the page first opens
 updateScene();
