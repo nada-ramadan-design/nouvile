@@ -4,7 +4,7 @@
 > An interactive night landscape where the moon, stars, mountains, and a boat come to life as you scroll.
 
 ## ✨ Live Demo
-🚀 Coming soon — the live website will be available here!
+ 🚀 [Click here to explore Nouvile]https://nada-ramadan-design.github.io/nouvile/
 
 <!-- Replace the line above with your GitHub Pages URL after deployment. -->
 
