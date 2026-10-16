@@ -4,64 +4,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nouvile | A Journey Beyond the Stars</title>
+    <meta name="theme-color" content="#10051d">
+    <meta name="description" content="Nouvile — an interactive journey beyond the stars.">
+    <title>NOUVILE — Beyond the Stars</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <a href="#" class="logo">NOUVILE</a>
+    <header class="header" id="top">
+        <a href="#top" class="logo">NOUVILE<span>.</span></a>
 
-        <nav>
-            <a href="#" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#journey">Journey</a>
-            <a href="#contact">Contact</a>
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav" id="nav">
+            <a href="#top" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#journey" class="nav-link">Journey</a>
+            <a href="#contact" class="nav-link nav-cta">Contact ↗</a>
         </nav>
     </header>
 
-    <section class="main">
-        <!-- Image names match the files in your GitHub repository -->
-        <img src="stars1-1536x864.png.webp" id="stars" alt="Night sky">
-        <img src="moon2-1536x864.png.webp" id="moon" alt="Moon">
-        <img src="mountains3-1536x864.png.webp" id="mountain3" alt="Mountains">
-        <img src="mountains4-1536x864.png.webp" id="mountain4" alt="Mountains">
-        <img src="river5-1536x864.png.webp" id="rivers" alt="River">
-        <img src="boat6-1536x864.png.webp" id="boat6" alt="Boat">
-        <img src="mountains7-1536x864.png.webp" id="mountain7" alt="Foreground mountains">
+    <main>
+        <section class="hero" id="home">
+            <div class="scene">
+                <img src="stars1-1536x864.png.webp"
+                     id="stars" class="scene-layer stars" alt="Starry night sky">
 
-        <h2 class="nouvile">NOUVILE</h2>
+                <img src="moon2-1536x864.png.webp"
+                     id="moon" class="scene-layer moon" alt="Glowing moon">
 
-        <div class="scroll-hint">
-            <span>SCROLL TO EXPLORE</span>
-            <span class="arrow">↓</span>
-        </div>
-    </section>
+                <img src="mountains3-1536x864.png.webp"
+                     id="mountain3" class="scene-layer mountain mountain-back"
+                     alt="Distant mountains">
 
-    <section class="content" id="about">
-        <p class="eyebrow">WELCOME TO NOUVILE</p>
-        <h1>A Journey Beyond the Stars</h1>
+                <img src="mountains4-1536x864.png.webp"
+                     id="mountain4" class="scene-layer mountain mountain-mid"
+                     alt="Purple mountain range">
 
-        <p>
-            Discover a magical world where the night sky,
-            mountains, moonlight, and a little boat create
-            a beautiful journey through an imaginary landscape.
-        </p>
+                <img src="river5-1536x864.png.webp"
+                     id="rivers" class="scene-layer river" alt="Moonlit river">
 
-        <p id="journey">
-            Scroll down and watch the scene transform.
-            Each layer moves at a different speed to create
-            a parallax scrolling effect.
-        </p>
+                <img src="boat6-1536x864.png.webp"
+                     id="boat6" class="scene-layer boat" alt="Boat sailing at night">
 
-        <div class="project-info" id="contact">
-            <h2>Explore the Unknown</h2>
-            <p>
-                Nouvile is a creative front-end project built
-                with HTML, CSS, and JavaScript.
+                <img src="mountains7-1536x864.png.webp"
+                     id="mountain7" class="scene-layer mountain mountain-front"
+                     alt="Foreground landscape">
+            </div>
+
+            <div class="hero-content">
+                <p class="eyebrow"><span></span> A WORLD BEYOND ORDINARY</p>
+                <h1>Find your own <span>universe.</span></h1>
+                <p class="hero-description">
+                    Somewhere between the moonlight and the mountains,
+                    a new journey begins.
+                </p>
+
+                <a href="#about" class="explore-btn">
+                    Explore the unknown <span>↘</span>
+                </a>
+            </div>
+
+            <div class="hero-bottom">
+                <span>01 / 03</span>
+                <span class="scroll-label">SCROLL TO DISCOVER ↓</span>
+                <span>MADE OF DREAMS</span>
+            </div>
+
+            <div class="vertical-label">THE NIGHT IS YOURS</div>
+        </section>
+
+        <section class="about section" id="about">
+            <div class="section-number">01 — THE IDEA</div>
+
+            <div class="about-grid">
+                <div>
+                    <p class="eyebrow">WELCOME TO NOUVILE</p>
+                    <h2>Not just a place.<br><span>A feeling.</span></h2>
+                </div>
+
+                <div class="about-copy">
+                    <p>
+                        Nouvile is an interactive experience inspired by
+                        the quiet beauty of the night sky. A world where
+                        glowing stars, distant mountains and a lonely boat
+                        come together to tell a story.
+                    </p>
+                    <p>
+                        Keep scrolling. Let the landscape move.
+                        Discover the magic hidden between every layer.
+                    </p>
+                    <a href="#journey" class="text-link">
+                        Discover the journey <span>↗</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="journey section" id="journey">
+            <div class="journey-glow"></div>
+            <p class="eyebrow">02 — THE EXPERIENCE</p>
+            <h2>Every scroll tells<br><span>a different story.</span></h2>
+            <p class="journey-copy">
+                Inspired by the universe. Built with code.
+                Designed to make you pause and look a little closer.
             </p>
-        </div>
-    </section>
+            <a href="#contact" class="outline-btn">Keep exploring ↗</a>
+        </section>
+
+        <section class="contact section" id="contact">
+            <p class="eyebrow">03 — YOUR NEXT CHAPTER</p>
+            <h2>Dream beyond<br>the <span>horizon.</span></h2>
+            <p>Every great journey starts with a single step.</p>
+            <a href="#top" class="explore-btn">Back to the stars ↑</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="#top" class="logo">NOUVILE<span>.</span></a>
+        <p>A little universe, made with curiosity.</p>
+        <a href="https://github.com/nada-ramadan-design/nouvile"
+           target="_blank" rel="noopener noreferrer" class="github-link">
+            VIEW THE PROJECT ON GITHUB ↗
+        </a>
+        <span class="copyright">© 2026 NOUVILE</span>
+    </footer>
 
     <script src="main.js"></script>
 </body>
